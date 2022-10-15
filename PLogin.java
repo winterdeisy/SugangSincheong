@@ -22,16 +22,10 @@ public class PLogin {
 		VLogin vLogin = sLogin.login(id, password); 
 		if(vLogin == null) {
 			System.out.print("아이디가 없거나 비밀번호가 틀렸습니다.");
-			//재로그인 시도
 			
 		}
+		System.out.println("로그인 성공!");
 		return vLogin;
-		
-//		if() {
-//			System.out.print("로그인 성공!");
-//		} else() {
-//			System.out.print("로그인 실패");
-//		}
 		
 	}
 
