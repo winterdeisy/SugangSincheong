@@ -6,26 +6,29 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class LoginPanel extends JPanel {
+public class LoginDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
 
-	private SLogin sLogin;
 	private JTextField tfId;
 	private JPasswordField tfPassword;
 	
-	public LoginPanel() {
+	private SLogin sLogin;
+	
+	public LoginDialog(Frame parent) { 
+		super(parent, "LoginDialog", true); 
+		
 		LayoutManager layoutManager = new GridLayout(3, 2);
 		this.setLayout(layoutManager);
+		this.setSize(500,200);
 				
-		//components
-		JLabel lbId = new JLabel("아이디");
+		JLabel lbId = new JLabel("아이디: ");
 		this.add(lbId);
 		
 		this.tfId = new JTextField();
 		this.tfId.setColumns(10);
 		this.add(this.tfId);
 		
-		JLabel lbPassword = new JLabel("비밀번호");
+		JLabel lbPassword = new JLabel("비밀번호: ");
 		this.add(lbPassword);
 		
 		this.tfPassword = new JPasswordField();
@@ -44,19 +47,17 @@ public class LoginPanel extends JPanel {
 	private void login() {
 		String id = this.tfId.getText();
 		String password = this.tfPassword.getText();
-
-		VLogin vLogin = sLogin.login(id, password); 
-		if(vLogin == null) {
-			System.out.print("아이디가 없거나 비밀번호가 틀렸습니다.");
-			
+		
+		VLogin vLogin = sLogin.login(id, password);
+		if (vLogin == null) {
+			// 아이디가 없거나 비밀번호가 틀렸습니다.
 		}
+
 	}
 	private class ActionHandler implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			login();
-		}
-		
+		}		
 	}
-
 }

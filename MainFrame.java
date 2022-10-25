@@ -13,15 +13,18 @@ public class MainFrame extends JFrame{
 		this.setSize(400, 600);
 		this.setTitle("명지대학교 수강신청 시스템");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//components
 		LayoutManager layoutManager = new BorderLayout();
 		this.setLayout(layoutManager);
 		
-		//components
-		LoginPanel loginPanel = new LoginPanel();
-		this.add(loginPanel, BorderLayout.NORTH); 
-		
 		SugangsincheongPanel sugangsincheongPanel = new SugangsincheongPanel();
 		this.add(sugangsincheongPanel, BorderLayout.CENTER); 
+		
+		LoginDialog loginPanel = new LoginDialog(this); 
+
+		loginPanel.setVisible(true); 
+		
 	}
 
 }
