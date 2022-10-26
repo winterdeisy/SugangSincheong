@@ -15,28 +15,35 @@ public class LoginDialog extends JDialog {
 	private SLogin sLogin;
 	
 	public LoginDialog(Frame parent) { 
-		super(parent, "LoginDialog", true); 
+		super(parent, "LoginDialog", true); //modal
+		this.setLocation(parent.getX()+30 , parent.getY()+30);
+		this.setSize(200,300);
 		
-		LayoutManager layoutManager = new GridLayout(3, 2);
-		this.setLayout(layoutManager);
-		this.setSize(500,200);
-				
+		//Box Layout : 라인세개가 y축으로 하나씩 붙게 하기
+		LayoutManager layoutManager1 = new FlowLayout();
+		LayoutManager layoutManager2 = new BoxLayout(getContentPane(), BoxLayout.PAGE_AXIS);
+		this.setLayout(layoutManager2);
+		
+		JPanel line1 = new JPanel();
+		this.add(line1);
 		JLabel lbId = new JLabel("아이디: ");
-		this.add(lbId);
+		JTextField tfId = new JTextField();
+		tfId.setColumns(10);
+		line1.add(lbId);
+		line1.add(tfId);
 		
-		this.tfId = new JTextField();
-		this.tfId.setColumns(10);
-		this.add(this.tfId);
-		
+		JPanel line2 = new JPanel();
+		this.add(line2);
 		JLabel lbPassword = new JLabel("비밀번호: ");
-		this.add(lbPassword);
+		JTextField tfPassword = new JTextField();
+		tfPassword.setColumns(10);
+		line2.add(lbPassword);
+		line2.add(tfPassword);
 		
-		this.tfPassword = new JPasswordField();
-		this.tfPassword.setColumns(10);
-		this.add(this.tfPassword);
-		
+		JPanel line3 = new JPanel();
+		this.add(line3);
 		JButton btLogin = new JButton("로그인");
-		this.add(btLogin);
+		line3.add(btLogin);
 		
 		ActionHandler actionHandler = new ActionHandler();
 		btLogin.addActionListener(actionHandler);
